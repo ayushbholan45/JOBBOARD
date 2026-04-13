@@ -87,7 +87,7 @@ const JobList = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-rose-50">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-rose-50">
 
       {/* Header */}
       <div className="bg-white border-b border-slate-100 py-10 px-4">
