@@ -3,13 +3,14 @@ from .models import Application
 
 class ApplicationSerializer(serializers.ModelSerializer):
     candidate_name = serializers.SerializerMethodField()
+    candidate_email = serializers.SerializerMethodField()
     job_title = serializers.SerializerMethodField()
 
     class Meta:
         model = Application
         fields = [
             'id', 'job', 'job_title',
-            'candidate', 'candidate_name',
+            'candidate', 'candidate_name', 'candidate_email',
             'resume', 'cover_letter',
             'status', 'applied_at'
         ]
@@ -17,6 +18,9 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
     def get_candidate_name(self, obj):
         return obj.candidate.username
+
+    def get_candidate_email(self, obj):
+        return obj.candidate.email
 
     def get_job_title(self, obj):
         return obj.job.title

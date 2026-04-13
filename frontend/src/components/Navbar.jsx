@@ -11,86 +11,64 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        
-        {/* Logo */}
-        <Link to="/" className="text-xl font-bold text-blue-600">
-          Jobboard
+    <nav className="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+        <Link to="/" className="flex items-center gap-2">
+          <div className="bg-emerald-500 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm">
+            J
+          </div>
+          <span className="text-xl font-bold text-white">
+            Job<span className="text-emerald-400">board</span>
+          </span>
         </Link>
 
-        {/* Nav links */}
         <div className="flex items-center gap-6">
-          <Link
-            to="/jobs"
-            className="text-gray-600 hover:text-blue-600 transition"
-          >
+          <Link to="/jobs" className="text-slate-400 hover:text-emerald-400 transition text-sm font-medium">
             Browse Jobs
           </Link>
 
-          {/* Not logged in */}
           {!user && (
             <>
-              <Link
-                to="/login"
-                className="text-gray-600 hover:text-blue-600 transition"
-              >
+              <Link to="/login" className="text-slate-400 hover:text-emerald-400 transition text-sm font-medium">
                 Login
               </Link>
-              <Link
-                to="/register"
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-              >
-                Register
+              <Link to="/register" className="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition text-sm font-medium">
+                Get Started
               </Link>
             </>
           )}
 
-          {/* Employer links */}
           {user?.role === 'employer' && (
             <>
-              <Link
-                to="/employer/dashboard"
-                className="text-gray-600 hover:text-blue-600 transition"
-              >
+              <Link to="/employer/dashboard" className="text-slate-400 hover:text-emerald-400 transition text-sm font-medium">
                 Dashboard
               </Link>
-              <Link
-                to="/employer/post-job"
-                className="text-gray-600 hover:text-blue-600 transition"
-              >
-                Post Job
+              <Link to="/employer/post-job" className="bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition text-sm font-medium">
+                Post a Job
               </Link>
             </>
           )}
 
-          {/* Candidate links */}
           {user?.role === 'candidate' && (
             <>
-              <Link
-                to="/candidate/dashboard"
-                className="text-gray-600 hover:text-blue-600 transition"
-              >
+              <Link to="/candidate/dashboard" className="text-slate-400 hover:text-emerald-400 transition text-sm font-medium">
                 Dashboard
               </Link>
-              <Link
-                to="/candidate/applications"
-                className="text-gray-600 hover:text-blue-600 transition"
-              >
+              <Link to="/candidate/applications" className="text-slate-400 hover:text-emerald-400 transition text-sm font-medium">
                 My Applications
               </Link>
             </>
           )}
 
-          {/* Logged in user */}
           {user && (
             <div className="flex items-center gap-3">
-              <span className="text-sm text-gray-500">
-                Hi, {user.username}
-              </span>
+              <div className="bg-slate-800 text-emerald-400 px-3 py-1 rounded-full text-sm font-medium border border-slate-700">
+                {user.username}
+              </div>
               <button
                 onClick={handleLogout}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition text-sm"
+                className="text-slate-500 hover:text-red-400 transition text-sm"
               >
                 Logout
               </button>
